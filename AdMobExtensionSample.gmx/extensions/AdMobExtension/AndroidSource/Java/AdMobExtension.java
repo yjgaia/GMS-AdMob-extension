@@ -18,6 +18,7 @@ public class AdMobExtension implements RewardedVideoAdListener {
 
 	private String testDeviceId;
 	private InterstitialAd interstitialAd;
+	private String rewardedVideoAdId;
 	private RewardedVideoAd rewardedVideoAd;
 
 	public double admob_init(String app_id) {
@@ -40,6 +41,16 @@ public class AdMobExtension implements RewardedVideoAdListener {
 				} else {
 					interstitialAd.loadAd(new AdRequest.Builder().build());
 				}
+				interstitialAd.setAdListener(new AdListener() {
+					@Override
+					public void onAdClosed() {
+						if (testDeviceId != null) {
+							interstitialAd.loadAd(new AdRequest.Builder().addTestDevice(testDeviceId).build());
+						} else {
+							interstitialAd.loadAd(new AdRequest.Builder().build());
+						}
+					}
+				});
 			}
 		});
 		return -1;
@@ -57,15 +68,16 @@ public class AdMobExtension implements RewardedVideoAdListener {
 	}
 
 	public double admob_init_rewarded_video_ad(final String ad_id) {
+		rewardedVideoAdId = ad_id;
 		final RewardedVideoAdListener that = this;
 		RunnerActivity.ViewHandler.post(new Runnable() {
 			public void run() {
 				rewardedVideoAd = MobileAds.getRewardedVideoAdInstance(RunnerActivity.CurrentActivity);
 				rewardedVideoAd.setRewardedVideoAdListener(that);
 				if (testDeviceId != null) {
-					rewardedVideoAd.loadAd(ad_id, new AdRequest.Builder().addTestDevice(testDeviceId).build());
+					rewardedVideoAd.loadAd(rewardedVideoAdId, new AdRequest.Builder().addTestDevice(testDeviceId).build());
 				} else {
-					rewardedVideoAd.loadAd(ad_id, new AdRequest.Builder().build());
+					rewardedVideoAd.loadAd(rewardedVideoAdId, new AdRequest.Builder().build());
 				}
 			}
 		});
@@ -94,7 +106,13 @@ public class AdMobExtension implements RewardedVideoAdListener {
 	public void onRewardedVideoAdLeftApplication() {}
 
 	@Override
-	public void onRewardedVideoAdClosed() {}
+	public void onRewardedVideoAdClosed() {
+		if (testDeviceId != null) {
+			rewardedVideoAd.loadAd(rewardedVideoAdId, new AdRequest.Builder().addTestDevice(testDeviceId).build());
+		} else {
+			rewardedVideoAd.loadAd(rewardedVideoAdId, new AdRequest.Builder().build());
+		}
+	}
 
 	@Override
 	public void onRewardedVideoAdFailedToLoad(int errorCode) {}

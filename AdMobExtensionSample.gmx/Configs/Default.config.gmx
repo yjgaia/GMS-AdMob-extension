@@ -267,7 +267,7 @@
     <option_ios_advertising_enable>false</option_ios_advertising_enable>
     <option_ios_advertising_key></option_ios_advertising_key>
     <option_ios_advertising_type>iAds</option_ios_advertising_type>
-    <option_ios_app_id></option_ios_app_id>
+    <option_ios_app_id>co.hanul.AdMobExtensionSample</option_ios_app_id>
     <option_ios_build_version>0</option_ios_build_version>
     <option_ios_certificate>&lt; Press refresh to fetch certificate list from Mac&gt;</option_ios_certificate>
     <option_ios_device_type>3</option_ios_device_type>

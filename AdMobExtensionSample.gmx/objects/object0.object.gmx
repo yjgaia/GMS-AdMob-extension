@@ -27,11 +27,22 @@
             <kind>1</kind>
             <string>/// init admob
 
-admob_init('ca-app-pub-7446483029011201~9673327814');
-admob_set_test_device_id('6CFE452476778C189560C5501C7A1348');
-
-admob_init_interstitial_ad('ca-app-pub-3940256099942544/1033173712');
-admob_init_rewarded_video_ad('ca-app-pub-3940256099942544/5224354917');
+if (os_type == os_ios) {
+    
+    admob_init('ca-app-pub-7446483029011201~8264166931');
+    admob_set_test_device_id('541a15f0cb81c4dd0063514ccbc40bbc');
+    
+    admob_init_interstitial_ad('ca-app-pub-3940256099942544/4411468910');
+    admob_init_rewarded_video_ad('ca-app-pub-3940256099942544/1712485313');
+    
+} else {
+    
+    admob_init('ca-app-pub-7446483029011201~9673327814');
+    admob_set_test_device_id('6CFE452476778C189560C5501C7A1348');
+    
+    admob_init_interstitial_ad('ca-app-pub-3940256099942544/1033173712');
+    admob_init_rewarded_video_ad('ca-app-pub-3940256099942544/5224354917');
+}
 </string>
           </argument>
         </arguments>
