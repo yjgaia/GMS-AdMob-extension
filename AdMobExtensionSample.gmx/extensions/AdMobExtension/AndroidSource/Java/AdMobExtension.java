@@ -126,6 +126,5 @@ public class AdMobExtension implements RewardedVideoAdListener {
 	@Override
 	public void onRewardedVideoStarted() {}
 
-	@Override
 	public void onRewardedVideoCompleted() {}
 }

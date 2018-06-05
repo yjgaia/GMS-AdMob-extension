@@ -17,6 +17,9 @@ pod install --repo-update
 
 이후 프레임워크 목록 중 `libPod-프로젝트 명.a` 를 삭제합니다.
 
+## Android 빌드 시 오류가 나는 경우
+GameMaker: Studio의 GooglePlayServicesExtension과 Google Play Service 라이브러리 버전 오류로 인해 빌드 시 오류가 날 수 있습니다. 이런 경우에는 AdMobExtension의 Android 탭의 Inject to Gradle dependencies 항목에서 `compile 'com.google.android.gms:play-services-ads:15.0.0'`를 삭제하고 다시 빌드하면 됩니다.
+
 ## 함수
 * `admob_init(app_id)` 익스텐션을 초기화합니다.
 * `admob_set_test_device_id(test_device_id)` 테스트 기기 ID를 추가합니다. 운영시에는 이 함수 호출을 제거합니다.
