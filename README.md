@@ -9,7 +9,7 @@ Extensions에서 `AdMobExtension.gmez`를 Import 합니다.
 ## iOS 설정
 https://developers.google.com/admob/ios/quick-start 페이지에 접속하여 Import the Mobile Ads SDK 항목을 따라 합니다.
 
-이후 프레임워크 목록 중 `libPod-프로젝트 명.a`이 있다면 삭제합니다.
+이후 프레임워크 목록 중 `libPod-프로젝트 명.a`을 삭제합니다.
 
 ## Android 빌드 시 오류가 나는 경우
 GameMaker: Studio의 GooglePlayServicesExtension과 Google Play Service 라이브러리 버전 오류로 인해 빌드 시 오류가 날 수 있습니다. 이런 경우에는 AdMobExtension의 Android 탭의 Inject to Gradle dependencies 항목에서 `compile 'com.google.android.gms:play-services-ads:15.0.0'`를 삭제하고 다시 빌드하면 됩니다.
